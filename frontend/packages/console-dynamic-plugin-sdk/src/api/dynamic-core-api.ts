@@ -8,7 +8,6 @@ import {
   VirtualizedTableFC,
   TableDataProps,
   UseActiveColumns,
-  ListPageHeaderProps,
   ListPageCreateProps,
   ListPageCreateLinkProps,
   ListPageCreateButtonProps,
@@ -50,8 +49,6 @@ export const TableData: React.FC<TableDataProps> = require('@console/internal/co
   .TableData;
 export const useActiveColumns: UseActiveColumns = require('@console/internal/components/factory/Table/active-columns-hook')
   .useActiveColumns;
-export const ListPageHeader: React.FC<ListPageHeaderProps> = require('@console/internal/components/factory/ListPage/ListPageHeader')
-  .default;
 export const ListPageCreate: React.FC<ListPageCreateProps> = require('@console/internal/components/factory/ListPage/ListPageCreate')
   .default;
 export const ListPageCreateLink: React.FC<ListPageCreateLinkProps> = require('@console/internal/components/factory/ListPage/ListPageCreate')
@@ -68,6 +65,8 @@ export const useListPageFilter: UseListPageFilter = require('@console/internal/c
   .useListPageFilter;
 export const ResourceLink: React.FC<ResourceLinkProps> = require('@console/internal/components/utils/resource-link')
   .ResourceLink;
+
+export { ListPageHeader } from '@console/dynamic-plugin-sdk/src/app/components/factory/ListPage/ListPageHeader';
 
 export { useK8sModel, useK8sModels } from '@console/dynamic-plugin-sdk/src/utils/k8s/hooks';
 

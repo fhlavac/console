@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { CopyToClipboard as CTC } from 'react-copy-to-clipboard';
 import { Tooltip } from '@patternfly/react-core';
 import { CopyIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
-import { ALL_NAMESPACES_KEY } from '@console/shared/src/constants';
 
 // Kubernetes "dns-friendly" names match
 // [a-z0-9]([-a-z0-9]*[a-z0-9])?  and are 63 or fewer characters
@@ -18,9 +17,11 @@ import { ALL_NAMESPACES_KEY } from '@console/shared/src/constants';
 //
 // And it's ok for users to make assumptions about capturing groups.
 
-export const legalNamePattern = /[a-z0-9](?:[-a-z0-9]*[a-z0-9])?/;
-
-const basePathPattern = new RegExp(`^/?${window.SERVER_FLAGS.basePath}`);
+export {
+  getNamespace,
+  legalNamePattern,
+  stripBasePath,
+} from '@console/dynamic-plugin-sdk/src/app/components/utils/link';
 
 export const namespacedPrefixes = [
   '/api-resource',
@@ -33,29 +34,6 @@ export const namespacedPrefixes = [
   '/search',
   '/status',
 ];
-
-export const stripBasePath = (path: string): string => path.replace(basePathPattern, '/');
-
-export const getNamespace = (path: string): string => {
-  path = stripBasePath(path);
-  const split = path.split('/').filter((x) => x);
-
-  if (split[1] === 'all-namespaces') {
-    return ALL_NAMESPACES_KEY;
-  }
-
-  let ns: string;
-  if (split[1] === 'cluster' && ['namespaces', 'projects'].includes(split[2]) && split[3]) {
-    ns = split[3];
-  } else if (split[1] === 'ns' && split[2]) {
-    ns = split[2];
-  } else {
-    return;
-  }
-
-  const match = ns.match(legalNamePattern);
-  return match && match.length > 0 && match[0];
-};
 
 export const getURLSearchParams = () => {
   const all: any = {};

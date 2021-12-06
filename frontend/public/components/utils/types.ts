@@ -1,19 +1,7 @@
-import {
-  K8sResourceKindReference,
-  Selector,
-  K8sResourceKind,
-  K8sResourceCommon,
-} from '../../module/k8s';
+import { K8sResourceKindReference, Selector, K8sResourceCommon } from '../../module/k8s';
+import { FirehoseResult } from '@console/dynamic-plugin-sdk/src/extensions/console-types';
 
-export type FirehoseResult<
-  R extends K8sResourceCommon | K8sResourceCommon[] = K8sResourceKind[]
-> = {
-  loaded: boolean;
-  loadError: string;
-  optional?: boolean;
-  data: R;
-  kind?: string;
-};
+export { FirehoseResult } from '@console/dynamic-plugin-sdk/src/extensions/console-types';
 
 export type FirehoseResultObject = { [key: string]: K8sResourceCommon | K8sResourceCommon[] };
 

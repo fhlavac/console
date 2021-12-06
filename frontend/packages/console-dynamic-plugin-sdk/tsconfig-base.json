@@ -12,7 +12,6 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "lib": ["es2016", "es2020.promise", "dom"],
-    "typeRoots": ["node_modules/@types", "@types"],
-    "types": ["node", "sdk"]
+    "typeRoots": ["node_modules/@types", "../../@types"]
   }
 }
