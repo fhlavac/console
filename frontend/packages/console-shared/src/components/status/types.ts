@@ -1,7 +1,1 @@
-export type StatusComponentProps = {
-  title?: string;
-  iconOnly?: boolean;
-  noTooltip?: boolean;
-  className?: string;
-  popoverTitle?: string;
-};
+export { StatusComponentProps } from '@console/dynamic-plugin-sdk';
