@@ -281,7 +281,7 @@ describe(RouteStatus.displayName, () => {
     };
 
     const wrapper = mount(<RouteStatus obj={route} />);
-    const statusComponent = wrapper.find('SuccessStatus');
+    const statusComponent = wrapper.find('GenericStatus');
     expect(statusComponent.exists()).toBeTruthy();
     expect(statusComponent.prop('title')).toEqual('Accepted');
   });
@@ -316,7 +316,7 @@ describe(RouteStatus.displayName, () => {
     };
 
     const wrapper = mount(<RouteStatus obj={route} />);
-    const statusComponent = wrapper.find('ErrorStatus');
+    const statusComponent = wrapper.find('GenericStatus');
     expect(statusComponent.exists()).toBeTruthy();
     expect(statusComponent.prop('title')).toEqual('Rejected');
   });
